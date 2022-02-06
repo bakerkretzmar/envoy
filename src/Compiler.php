@@ -271,7 +271,7 @@ class Compiler
      */
     protected function compileServers($value)
     {
-        $pattern = $this->createMatcher('servers');
+        $pattern = '/(?<!\w)(\s*)@servers(\s*\((?:([\'\"])(?:\\\3|.)*?\3|[^)])*\))/';
 
         return preg_replace($pattern, '$1<?php $__container->servers$2; ?>', $value);
     }
